@@ -33,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
         button = findViewById(R.id.Play);
-        textView = findViewById(R.id.testText);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 PlayGame();
