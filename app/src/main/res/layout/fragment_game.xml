@@ -31,7 +31,8 @@
         android:textAlignment="center"
         android:textAllCaps="true"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textSize="32sp" />
+        android:textSize="32sp"
+        android:elevation="2dp"/>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/letterContainer"
@@ -39,12 +40,13 @@
         android:layout_height="239dp"
         android:layout_alignParentBottom="true"
         android:backgroundTint="#2d40ba"
+        android:elevation="4dp"
         app:cardBackgroundColor="#FFFFFF">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="40sp"
+            android:layout_marginTop="50sp"
             android:gravity="center_horizontal">
 
             <Button
@@ -53,12 +55,12 @@
                 android:layout_marginLeft="20sp"
                 android:layout_marginRight="20sp"
                 android:background="@drawable/custom_button"
+                app:backgroundTint="#003700B3"
+                app:backgroundTintMode="add"
                 android:fontFamily="@font/noma"
                 android:text="A"
                 android:textColor="#000000"
-                android:textSize="24sp"
-                app:backgroundTint="#003700B3"
-                app:backgroundTintMode="add" />
+                android:textSize="24sp" />
 
             <Button
                 android:layout_width="50sp"
@@ -100,7 +102,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="120sp"
+            android:layout_marginTop="110sp"
             android:gravity="center_horizontal">
 
             <Button
