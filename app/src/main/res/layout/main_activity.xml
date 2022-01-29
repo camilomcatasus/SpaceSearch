@@ -8,12 +8,18 @@
     tools:context=".MainActivity"
     >
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/croppedspace_2"
+        android:scaleType="centerCrop"/>
+
     <Button
         android:id="@+id/test"
 
-        android:layout_width="248dp"
+        android:layout_width="220dp"
         android:layout_height="72dp"
-        android:layout_marginBottom="248dp"
+        android:layout_marginBottom="208dp"
         android:background="@drawable/buttonblue"
         android:fontFamily="@font/opensans_bold"
         android:gravity="center_horizontal"
@@ -30,15 +36,15 @@
         app:backgroundTintMode="add"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.500"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/otherTest"
 
-        android:layout_width="248dp"
+        android:layout_width="220dp"
         android:layout_height="72dp"
-        android:layout_marginBottom="156dp"
+        android:layout_marginBottom="116dp"
         android:background="@drawable/buttonblue_b"
         android:fontFamily="@font/opensans_bold"
         android:gravity="center_horizontal"
@@ -55,15 +61,15 @@
         app:backgroundTintMode="add"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.500"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/Play"
-        android:layout_width="248dp"
+        android:layout_width="220dp"
 
         android:layout_height="72dp"
-        android:layout_marginBottom="336dp"
+        android:layout_marginBottom="300dp"
 
         android:background="@drawable/buttongreen"
         android:fontFamily="@font/opensans_bold"
@@ -82,13 +88,6 @@
         app:iconTint="#00FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.500"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/testText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/Play"
-        android:text="templmao"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
