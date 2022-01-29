@@ -15,8 +15,7 @@
         android:layout_above="@+id/wordView"
         android:adjustViewBounds="false"
         android:scaleType="centerCrop"
-        app:srcCompat="@drawable/ic_launcher_background"
-        tools:src="@tools:sample/backgrounds/scenic"
+        app:srcCompat="@drawable/loading"
         tools:ignore="VectorDrawableCompat" />
 
     <TextView
@@ -42,8 +41,6 @@
         android:layout_alignParentBottom="true"
         android:backgroundTint="#2d40ba"
         android:elevation="4dp">
-
-
     </RelativeLayout>
 
 </RelativeLayout>

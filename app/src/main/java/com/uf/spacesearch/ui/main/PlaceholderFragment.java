@@ -2,6 +2,7 @@ package com.uf.spacesearch.ui.main;
 
 import android.content.Intent;
 import android.content.res.Resources;
+import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.Drawable;
 import android.media.Image;
 import android.os.Build;
@@ -67,6 +68,14 @@ public class PlaceholderFragment extends Fragment {
     }
 
     @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        ImageView load = (ImageView) getView().findViewById(R.id.imageView); //we get a null pointer exception here, gotta find outn why
+        load.setImageResource(R.drawable.loading);
+        AnimationDrawable loading = (AnimationDrawable) load.getDrawable();
+        loading.start();
+    }
+
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         pageViewModel = new ViewModelProvider(this).get(PageViewModel.class);
@@ -83,7 +92,6 @@ public class PlaceholderFragment extends Fragment {
             e.printStackTrace();
         }
         pageViewModel.setIndex(index);
-
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
