@@ -1,18 +1,26 @@
 package com.uf.spacesearch.ui.main;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.media.Image;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -32,6 +40,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -45,6 +56,7 @@ public class PlaceholderFragment extends Fragment {
     private FragmentGameBinding binding;
     String image;
     String name;
+    int index = 0;
     public static PlaceholderFragment newInstance(int index, JSONArray jsonArray) {
         PlaceholderFragment fragment = new PlaceholderFragment();
         Bundle bundle = new Bundle();
@@ -74,6 +86,7 @@ public class PlaceholderFragment extends Fragment {
 
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public View onCreateView(
             @NonNull LayoutInflater inflater, ViewGroup container,
@@ -110,6 +123,38 @@ public class PlaceholderFragment extends Fragment {
         queue.add(stringRequest);
         TextView textView = (TextView) root.findViewById(R.id.wordView);
         textView.setText(name);
+        RelativeLayout relativeLayout = (RelativeLayout) root.findViewById(R.id.letterContainer);
+        ArrayList<Character> letters = getLetters(name);
+        Collections.shuffle(letters);
+        View whatToAdd = LayoutInflater.from(root.getContext()).inflate(R.layout.single_row, null, false);
+        LinearLayout single = whatToAdd.findViewById(R.id.singleRow);
+
+        if(letters.size() > 6)
+            whatToAdd = LayoutInflater.from(relativeLayout.getContext()).inflate(R.layout.double_row, null, false);
+        else
+        {
+            for (Character c: letters)
+            {
+                Button testButton = new Button(root.getContext());
+
+                testButton.setLayoutParams(new LinearLayout.LayoutParams(100, 100));
+                testButton.setText(c.toString());
+                testButton.setBackground(root.getContext().getDrawable(R.drawable.custom_button));
+                //Button textButton = (Button)LayoutInflater.from(whatToAdd.getContext()).inflate(R.layout.letter_button, null, false);
+
+                testButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        textView.setText(textView.getText() + c.toString());
+                    }
+                });
+                single.addView(testButton);
+            }
+        }
+        relativeLayout.addView(whatToAdd);
+        int index = 0;
+
+
         return root;
     }
 
@@ -117,6 +162,22 @@ public class PlaceholderFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+
+    ArrayList<Character> getLetters(String str)
+    {
+        ArrayList<Character> toReturn = new ArrayList<>();
+        for(int i = 0; i < str.length(); i++)
+        {
+            if(Character.isLetter(str.charAt(i)))
+                toReturn.add(str.charAt(i));
+        }
+        double difficulty = 0.2;
+        int extraChars = (int) Math.ceil(toReturn.size() * difficulty);
+        Random random = new Random();
+        toReturn.add(Character.valueOf((char) (random.nextInt(26) + 65)));
+        return toReturn;
     }
 
 }

@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Button xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="@dimen/box_size"
-    android:layout_height="@dimen/box_size"
-    android:background="@color/black"
-    tools:text="A">
-
+    android:layout_width="50sp"
+    android:layout_height="50sp"
+        android:layout_marginRight="20sp"
+        android:background="@drawable/custom_button"
+        android:fontFamily="@font/noma"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        android:backgroundTint="#003700B3"
+        android:backgroundTintMode="add"
+    >
 </Button>
