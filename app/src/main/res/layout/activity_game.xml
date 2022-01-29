@@ -9,7 +9,9 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/Theme.SpaceSearch.AppBarOverlay">
+        android:theme="@style/Theme.SpaceSearch.AppBarOverlay"
+        android:gravity="center_horizontal"
+        android:backgroundTint="#2d40ba">
 
         <TextView
             android:id="@+id/title"
@@ -24,7 +26,7 @@
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabs"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0sp"
             android:background="?attr/colorPrimary" />
     </com.google.android.material.appbar.AppBarLayout>
 
