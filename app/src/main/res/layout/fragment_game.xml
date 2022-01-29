@@ -11,26 +11,105 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="match_parent"
         android:layout_above="@+id/wordView"
+        android:adjustViewBounds="false"
+        android:scaleType="centerCrop"
         app:srcCompat="@drawable/ic_launcher_background"
         tools:src="@tools:sample/backgrounds/scenic" />
 
     <TextView
         android:id="@+id/wordView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="140px"
         android:layout_above="@+id/letterContainer"
+        android:layout_marginBottom="0dp"
+        android:fontFamily="@font/anonpro_bold"
+        android:gravity="center"
+        android:letterSpacing=".2"
         android:text="tempWord"
         android:textAlignment="center"
+        android:textAllCaps="true"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:gravity="center_horizontal" />
+        android:textSize="32sp" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/letterContainer"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="239dp"
         android:layout_alignParentBottom="true"
-        />
+        app:cardBackgroundColor="#FFFFFF">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="40sp">
+            <Button
+                android:layout_width="50sp"
+                android:layout_height="50sp"
+                android:layout_marginLeft="20sp"
+                android:fontFamily="@font/anonpro"
+                android:textSize="24sp"
+                android:text="A"
+                android:layout_marginRight="20sp"/>
+            <Button
+                android:layout_width="50sp"
+                android:layout_height="50sp"
+                android:fontFamily="@font/anonpro"
+                android:textSize="24sp"
+                android:text="B"
+                android:layout_marginRight="20sp"/>
+            <Button
+                android:layout_width="50sp"
+                android:layout_height="50sp"
+                android:fontFamily="@font/anonpro"
+                android:textSize="24sp"
+                android:text="C"
+                android:layout_marginRight="20sp"/>
+            <Button
+                android:layout_width="50sp"
+                android:layout_height="50sp"
+                android:fontFamily="@font/anonpro"
+                android:textSize="24sp"
+                android:text="D"
+                android:layout_marginRight="20sp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="120sp">
+            <Button
+                android:layout_width="50sp"
+                android:layout_height="50sp"
+                android:fontFamily="@font/anonpro"
+                android:textSize="24sp"
+                android:text="E"
+                android:layout_marginLeft="20sp"
+                android:layout_marginRight="20sp"/>
+            <Button
+                android:layout_width="50sp"
+                android:layout_height="50sp"
+                android:fontFamily="@font/anonpro"
+                android:textSize="24sp"
+                android:text="F"
+                android:layout_marginRight="20sp"/>
+            <Button
+                android:layout_width="50sp"
+                android:layout_height="50sp"
+                android:fontFamily="@font/anonpro"
+                android:textSize="24sp"
+                android:text="G"
+                android:layout_marginRight="20sp"/>
+            <Button
+                android:layout_width="50sp"
+                android:layout_height="50sp"
+                android:fontFamily="@font/anonpro"
+                android:textSize="24sp"
+                android:text="H"
+                android:layout_marginRight="20sp"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
 </RelativeLayout>
