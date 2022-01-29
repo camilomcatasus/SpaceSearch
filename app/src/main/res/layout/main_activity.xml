@@ -14,4 +14,18 @@
         android:text="Play"
         android:layout_centerInParent="true"
         />
+
+    <Button
+        android:id="@+id/test"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/Play"
+        android:text="Test"
+        android:layout_centerInParent="true"/>
+    <TextView
+        android:id="@+id/testText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Play"
+        android:text="templmao"/>
 </RelativeLayout>

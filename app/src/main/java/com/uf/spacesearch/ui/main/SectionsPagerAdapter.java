@@ -10,6 +10,8 @@ import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.uf.spacesearch.R;
 
+import org.json.JSONArray;
+
 /**
  * A [FragmentPagerAdapter] that returns a fragment corresponding to
  * one of the sections/tabs/pages.
@@ -19,17 +21,18 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     @StringRes
     private static final int[] TAB_TITLES = new int[]{R.string.tab_text_1, R.string.tab_text_2};
     private final Context mContext;
-
-    public SectionsPagerAdapter(Context context, FragmentManager fm) {
+    JSONArray images;
+    public SectionsPagerAdapter(Context context, FragmentManager fm, JSONArray jsonArray) {
         super(fm);
         mContext = context;
+        images = jsonArray;
     }
 
     @Override
     public Fragment getItem(int position) {
         // getItem is called to instantiate the fragment for the given page.
         // Return a PlaceholderFragment (defined as a static inner class below).
-        return PlaceholderFragment.newInstance(position + 1);
+        return PlaceholderFragment.newInstance(position + 1, images);
     }
 
     @Nullable
