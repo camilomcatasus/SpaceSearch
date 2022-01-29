@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
@@ -8,24 +9,86 @@
     >
 
     <Button
-        android:id="@+id/Play"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Play"
-        android:layout_centerInParent="true"
-        />
+        android:id="@+id/test"
+
+        android:layout_width="248dp"
+        android:layout_height="72dp"
+        android:layout_marginBottom="248dp"
+        android:background="@drawable/buttonblue"
+        android:fontFamily="@font/opensans_bold"
+        android:gravity="center_horizontal"
+        android:shadowColor="#A8A8A8"
+        android:shadowDx="0"
+        android:shadowDy="0"
+
+        android:shadowRadius="5"
+        android:text="Test"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        app:backgroundTint="#00FFFFFF"
+        app:backgroundTintMode="add"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.500"
+        app:layout_constraintStart_toStartOf="parent"/>
 
     <Button
-        android:id="@+id/test"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/Play"
-        android:text="Test"
-        android:layout_centerInParent="true"/>
+        android:id="@+id/otherTest"
+
+        android:layout_width="248dp"
+        android:layout_height="72dp"
+        android:layout_marginBottom="156dp"
+        android:background="@drawable/buttonblue_b"
+        android:fontFamily="@font/opensans_bold"
+        android:gravity="center_horizontal"
+        android:shadowColor="#A8A8A8"
+        android:shadowDx="0"
+        android:shadowDy="0"
+
+        android:shadowRadius="5"
+        android:text="OtherTest"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        app:backgroundTint="#00FFFFFF"
+        app:backgroundTintMode="add"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.500"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/Play"
+        android:layout_width="248dp"
+
+        android:layout_height="72dp"
+        android:layout_marginBottom="336dp"
+
+        android:background="@drawable/buttongreen"
+        android:fontFamily="@font/opensans_bold"
+        android:gravity="center_horizontal"
+        android:lineSpacingExtra="8sp"
+        android:shadowColor="#A8A8A8"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="5"
+        android:text="Start"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFFFF"
+        android:textSize="32sp"
+        app:backgroundTint="#00FFFFFF"
+        app:backgroundTintMode="add"
+        app:iconTint="#00FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.500"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <TextView
         android:id="@+id/testText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/Play"
         android:text="templmao"/>
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
