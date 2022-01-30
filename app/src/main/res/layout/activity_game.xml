@@ -17,6 +17,30 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <TextView
+                android:id="@+id/scorenum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="22dp"
+                android:layout_marginRight="5dp"
+                android:fontFamily="@font/opensans_bold"
+                android:gravity="right|center_vertical"
+                android:text="34"
+                android:textColor="#FFFFFF"
+                android:textSize="38sp"/>
+
+            <TextView
+                android:id="@+id/scoretext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="40dp"
+                android:fontFamily="@font/opensans_bold"
+                android:text="Score:"
+                android:textColor="#FFFFFF"
+                android:textSize="24sp" />
+
             <Button
                 android:id="@+id/home"
                 android:layout_width="50sp"
@@ -49,13 +73,5 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

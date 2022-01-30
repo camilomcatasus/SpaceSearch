@@ -29,6 +29,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.uf.spacesearch.ui.main.SectionsPagerAdapter;
 import com.uf.spacesearch.databinding.ActivityGameBinding;
@@ -39,6 +40,7 @@ public class GameActivity extends AppCompatActivity {
     RequestQueue queue;
     String url = "https://images-api.nasa.gov/search?q=space&media_type=image";
     JSONArray images;
+    int score = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +57,8 @@ public class GameActivity extends AppCompatActivity {
 
         ViewPager viewPager = binding.viewPager;
 
+        UpdateScore();
+
         viewPager.setAdapter(sectionsPagerAdapter);
         TabLayout tabs = binding.tabs;
         tabs.setupWithViewPager(viewPager);
@@ -62,6 +66,8 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onFragmentResult(@NonNull @NotNull String requestKey, @NonNull @NotNull Bundle result) {
                 //TODO: upon listening to fragment result, update score
+                ++score;
+                UpdateScore();
                 sectionsPagerAdapter.destroyItem(viewPager,(int)result.get("position"), sectionsPagerAdapter.getItem((int)result.get("position")));
                 sectionsPagerAdapter.fragmentHashMap.remove((int)result.getInt("position"));
                 sectionsPagerAdapter.getItem((int)result.get("position"));
@@ -78,5 +84,10 @@ public class GameActivity extends AppCompatActivity {
     private void MainMenu() {
         //do some stuff
         startActivity(new Intent(this, MainActivity.class));
+    }
+
+    public void UpdateScore() {
+        TextView scoreText = (TextView) findViewById(R.id.scorenum);
+        scoreText.setText(String.valueOf(score));
     }
 }
