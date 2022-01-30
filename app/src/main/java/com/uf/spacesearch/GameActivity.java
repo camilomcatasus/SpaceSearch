@@ -1,5 +1,8 @@
 package com.uf.spacesearch;
 
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import org.json.*;
 
@@ -13,12 +16,15 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
 
+import androidx.annotation.Nullable;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 
 import com.uf.spacesearch.ui.main.SectionsPagerAdapter;
 import com.uf.spacesearch.databinding.ActivityGameBinding;
@@ -29,6 +35,7 @@ public class GameActivity extends AppCompatActivity {
     RequestQueue queue;
     String url = "https://images-api.nasa.gov/search?media_type=image";
     JSONArray images;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,9 +53,16 @@ public class GameActivity extends AppCompatActivity {
         TabLayout tabs = binding.tabs;
         tabs.setupWithViewPager(viewPager);
 
+        Button button = (Button) findViewById(R.id.home);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                MainMenu();
+            }
+        }) ;
+    }
 
-
-
-
+    private void MainMenu() {
+        //do some stuff
+        startActivity(new Intent(this, MainActivity.class));
     }
 }

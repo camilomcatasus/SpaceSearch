@@ -14,6 +14,16 @@
         android:src="@drawable/croppedspace_2"
         android:scaleType="centerCrop"/>
 
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="256dp"
+        android:layout_marginBottom="416dp"
+        android:src="@drawable/title"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <Button
         android:id="@+id/test"
 
