@@ -20,7 +20,9 @@ import com.google.android.material.tabs.TabLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentResultListener;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -31,6 +33,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.uf.spacesearch.ui.main.PlaceholderFragment;
 import com.uf.spacesearch.ui.main.SectionsPagerAdapter;
 import com.uf.spacesearch.databinding.ActivityGameBinding;
 
@@ -38,7 +41,7 @@ public class GameActivity extends AppCompatActivity {
 
     private ActivityGameBinding binding;
     RequestQueue queue;
-    String url = "https://images-api.nasa.gov/search?q=space&media_type=image";
+    String url = "https://images-api.nasa.gov/search?q=space%station&media_type=image";
     JSONArray images;
     int score = 0;
 
@@ -53,24 +56,38 @@ public class GameActivity extends AppCompatActivity {
         }
         binding = ActivityGameBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager(), images);
 
-        ViewPager viewPager = binding.viewPager;
+        PlaceholderFragment f = PlaceholderFragment.newInstance(0, images);
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.add(R.id.fragmentContainerView,f, "tag");
+        ft.commit();
+        //SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager(), images);
+
+        //ViewPager viewPager = binding.viewPager;
 
         UpdateScore();
 
-        viewPager.setAdapter(sectionsPagerAdapter);
-        TabLayout tabs = binding.tabs;
-        tabs.setupWithViewPager(viewPager);
+        //viewPager.setAdapter(sectionsPagerAdapter);
+        //TabLayout tabs = binding.tabs;
+        //tabs.setupWithViewPager(viewPager);
         getSupportFragmentManager().setFragmentResultListener("requestKey", this, new FragmentResultListener() {
             @Override
             public void onFragmentResult(@NonNull @NotNull String requestKey, @NonNull @NotNull Bundle result) {
                 //TODO: upon listening to fragment result, update score
                 ++score;
                 UpdateScore();
-                sectionsPagerAdapter.destroyItem(viewPager,(int)result.get("position"), sectionsPagerAdapter.getItem((int)result.get("position")));
+                /*sectionsPagerAdapter.destroyItem(viewPager,(int)result.get("position"), sectionsPagerAdapter.getItem((int)result.get("position")));
                 sectionsPagerAdapter.fragmentHashMap.remove((int)result.getInt("position"));
-                sectionsPagerAdapter.getItem((int)result.get("position"));
+                Fragment f = sectionsPagerAdapter.getItem((int)result.get("position"));
+
+                //f.onCreate();
+                //viewPager.addView(f.getView());
+                sectionsPagerAdapter.notifyDataSetChanged();
+                tabs.setupWithViewPager(viewPager);*/
+                PlaceholderFragment f = PlaceholderFragment.newInstance(0, images);
+                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.fragmentContainerView,f, "tag");
+                ft.commit();
             }
         });
         Button button = (Button) findViewById(R.id.home);

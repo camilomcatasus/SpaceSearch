@@ -82,14 +82,12 @@ public class PlaceholderFragment extends Fragment {
         super.onCreate(savedInstanceState);
         pageViewModel = new ViewModelProvider(this).get(PageViewModel.class);
         position = 1;
-        if (getArguments() != null) {
-            position = getArguments().getInt(ARG_SECTION_NUMBER);
-        }
         try {
             Random random = new Random();
             JSONObject jsonObj = new JSONArray(getArguments().getString("response")).getJSONObject(random.nextInt(60));
             image = jsonObj.getString("href");
             name = jsonObj.getJSONArray("data").getJSONObject(0).getString("title");
+
         } catch (JSONException e) {
             e.printStackTrace();
         }

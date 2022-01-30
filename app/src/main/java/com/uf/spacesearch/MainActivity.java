@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     boolean searching = false;
     TextView textView ;
     RequestQueue queue;
-    String url = "https://images-api.nasa.gov/search?q=space&media_type=image";
+    String url = "https://images-api.nasa.gov/search?q=space%20station&media_type=image";
     JSONArray images;
     Context context = this;
     @Override

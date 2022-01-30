@@ -40,12 +40,23 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         // Return a PlaceholderFragment (defined as a static inner class below).
 
         if(!fragmentHashMap.containsKey(position)) {
-            Fragment fragment = PlaceholderFragment.newInstance(position + 1, images);
+            Fragment fragment = PlaceholderFragment.newInstance(position, images);
             fragmentHashMap.put(position, fragment);
             return fragment;
         }
         return fragmentHashMap.get(position);
     }
+
+    @Override
+    public int getItemPosition(Object o)
+    {
+        if(fragmentHashMap.containsValue(o))
+        {
+            return POSITION_UNCHANGED;
+        }
+        return POSITION_NONE;
+    }
+
 
     @Nullable
     @Override
