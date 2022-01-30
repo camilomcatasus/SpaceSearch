@@ -20,12 +20,14 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Random;
+
 public class MainActivity extends AppCompatActivity {
     Button button;
     boolean searching = false;
     TextView textView ;
     RequestQueue queue;
-    String url = "https://images-api.nasa.gov/search?q=space%20station&media_type=image";
+    String url = "https://images-api.nasa.gov/search?q=space&media_type=image";
     JSONArray images;
     Context context = this;
     @Override
@@ -56,6 +58,8 @@ public class MainActivity extends AppCompatActivity {
         if(!searching) {
             searching = true;
             queue = Volley.newRequestQueue(this);
+            Random random = new Random();
+            url = url + "&page=" + random.nextInt(20);
             StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                     new Response.Listener<String>() {
                         @Override

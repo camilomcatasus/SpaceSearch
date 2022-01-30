@@ -84,9 +84,10 @@ public class PlaceholderFragment extends Fragment {
         position = 1;
         try {
             Random random = new Random();
-            JSONObject jsonObj = new JSONArray(getArguments().getString("response")).getJSONObject(random.nextInt(60));
+            JSONObject jsonObj = new JSONArray(getArguments().getString("response")).getJSONObject(random.nextInt(99));
             image = jsonObj.getString("href");
             name = jsonObj.getJSONArray("data").getJSONObject(0).getString("title");
+            name = getName(name, 2);
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -128,7 +129,7 @@ public class PlaceholderFragment extends Fragment {
                 //TODO: reload fragment
             }
         });
-        int maxCol = 6;
+
         queue.add(stringRequest);
         TextView textView = (TextView) root.findViewById(R.id.wordView);
         nameTemplate = replaceName(name);
@@ -138,6 +139,7 @@ public class PlaceholderFragment extends Fragment {
         Collections.shuffle(letters);
         View whatToAdd = LayoutInflater.from(root.getContext()).inflate(R.layout.single_row, null, false);
         LinearLayout single = whatToAdd.findViewById(R.id.singleRow);
+        int maxCol = letters.size()/2;
         //If we need two rows use the two row layout and add buttons
         if(letters.size() > maxCol)
         {
@@ -248,5 +250,22 @@ public class PlaceholderFragment extends Fragment {
         }
         return toReturn;
     }
-
+    String getName(String str, int num)
+    {
+        String toReturn = "";
+        int count = 0;
+        for(int i = 0; i < str.length(); i++)
+        {
+            if(str.charAt(i) == ' ')
+            {
+                count++;
+                if(count == num)
+                {
+                    break;
+                }
+            }
+            toReturn += str.charAt(i);
+        }
+        return toReturn;
+    }
 }
