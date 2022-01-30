@@ -25,7 +25,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/test"
+        android:id="@+id/gallery"
 
         android:layout_width="220dp"
         android:layout_height="72dp"
@@ -38,7 +38,7 @@
         android:shadowDy="0"
 
         android:shadowRadius="5"
-        android:text="Test"
+        android:text="Gallery"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
         android:textSize="30sp"
@@ -50,7 +50,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/otherTest"
+        android:id="@+id/credits"
 
         android:layout_width="220dp"
         android:layout_height="72dp"
@@ -63,7 +63,7 @@
         android:shadowDy="0"
 
         android:shadowRadius="5"
-        android:text="OtherTest"
+        android:text="Credits"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
         android:textSize="30sp"

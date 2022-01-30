@@ -38,6 +38,18 @@ public class MainActivity extends AppCompatActivity {
                 PlayGame();
             }
         }) ;
+        Button galleryButton = (Button) findViewById(R.id.gallery);
+        galleryButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                EnterGallery();
+            }
+        });
+        Button creditsButton = (Button) findViewById(R.id.credits);
+        creditsButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                EnterCredits();
+            }
+        });
     }
 
     private void PlayGame() {
@@ -62,6 +74,14 @@ public class MainActivity extends AppCompatActivity {
             });
             queue.add(stringRequest);
         }
+    }
+
+    private void EnterGallery() {
+        startActivity(new Intent(this, GalleryActivity.class));
+    }
+
+    private void EnterCredits() {
+        startActivity(new Intent(this, CreditsActivity.class));
     }
 
 }
