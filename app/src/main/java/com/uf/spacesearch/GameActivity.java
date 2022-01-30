@@ -33,7 +33,7 @@ public class GameActivity extends AppCompatActivity {
 
     private ActivityGameBinding binding;
     RequestQueue queue;
-    String url = "https://images-api.nasa.gov/search?media_type=image";
+    String url = "https://images-api.nasa.gov/search?q=space&media_type=image";
     JSONArray images;
 
     @Override
@@ -48,6 +48,7 @@ public class GameActivity extends AppCompatActivity {
         binding = ActivityGameBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager(), images);
+
         ViewPager viewPager = binding.viewPager;
         viewPager.setAdapter(sectionsPagerAdapter);
         TabLayout tabs = binding.tabs;

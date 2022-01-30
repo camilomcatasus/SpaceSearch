@@ -57,6 +57,7 @@ public class PlaceholderFragment extends Fragment {
     private FragmentGameBinding binding;
     String image;
     String name;
+    String nameTemplate;
     int index = 0;
     public static PlaceholderFragment newInstance(int index, JSONArray jsonArray) {
         PlaceholderFragment fragment = new PlaceholderFragment();
@@ -128,24 +129,68 @@ public class PlaceholderFragment extends Fragment {
                 //TODO: reload fragment
             }
         });
+        int maxCol = 6;
         queue.add(stringRequest);
         TextView textView = (TextView) root.findViewById(R.id.wordView);
-        textView.setText(name);
+        nameTemplate = replaceName(name);
+        textView.setText(nameTemplate);
         RelativeLayout relativeLayout = (RelativeLayout) root.findViewById(R.id.letterContainer);
         ArrayList<Character> letters = getLetters(name);
         Collections.shuffle(letters);
         View whatToAdd = LayoutInflater.from(root.getContext()).inflate(R.layout.single_row, null, false);
         LinearLayout single = whatToAdd.findViewById(R.id.singleRow);
-
-        if(letters.size() > 6)
-            whatToAdd = LayoutInflater.from(relativeLayout.getContext()).inflate(R.layout.double_row, null, false);
-        else
+        //If we need two rows use the two row layout and add buttons
+        if(letters.size() > maxCol)
         {
+            whatToAdd = LayoutInflater.from(relativeLayout.getContext()).inflate(R.layout.double_row, null, false);
+            LinearLayout firstRow = whatToAdd.findViewById(R.id.topRow);
+            LinearLayout secondRow = whatToAdd.findViewById(R.id.botRow);
+            for(int i = 0; i < letters.size(); i++)
+            {
+                Button testButton = new Button(root.getContext());
+
+                testButton.setLayoutParams(new LinearLayout.LayoutParams(150, 150));
+                testButton.setText(letters.get(i).toString());
+                testButton.setBackground(root.getContext().getDrawable(R.drawable.custom_button));
+                //Button textButton = (Button)LayoutInflater.from(whatToAdd.getContext()).inflate(R.layout.letter_button, null, false);
+                Character letter = letters.get(i);
+                testButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        textView.setText(textView.getText().toString().substring(0,index) + letter.toString() + textView.getText().toString().substring(index+1));
+                        index++;
+                        while(index < textView.getText().length() && (textView.getText().charAt(index) != '_'))
+                        {
+                            index++;
+                        }
+                        if(textView.getText().length() == index)
+                        {if(textView.getText().toString().equals(name))
+                            {
+                                //TODO: update score, destroy and replace fragment
+                            }
+                            else
+                            {
+                                textView.setText(nameTemplate);
+                            }
+                            index = 0;
+                        }
+                    }
+                });
+                if(i < maxCol)
+                    firstRow.addView(testButton);
+                else
+                    secondRow.addView(testButton);
+
+            }
+        }
+        else//keep the single row layout and add buttons
+        {
+
             for (Character c: letters)
             {
                 Button testButton = new Button(root.getContext());
 
-                testButton.setLayoutParams(new LinearLayout.LayoutParams(100, 100));
+                testButton.setLayoutParams(new LinearLayout.LayoutParams(150, 150));
                 testButton.setText(c.toString());
                 testButton.setBackground(root.getContext().getDrawable(R.drawable.custom_button));
                 //Button textButton = (Button)LayoutInflater.from(whatToAdd.getContext()).inflate(R.layout.letter_button, null, false);
@@ -181,10 +226,22 @@ public class PlaceholderFragment extends Fragment {
             if(Character.isLetter(str.charAt(i)))
                 toReturn.add(str.charAt(i));
         }
-        double difficulty = 0.2;
+        double difficulty = 0;
         int extraChars = (int) Math.ceil(toReturn.size() * difficulty);
         Random random = new Random();
         toReturn.add(Character.valueOf((char) (random.nextInt(26) + 65)));
+        return toReturn;
+    }
+    String replaceName(String str)
+    {
+        String toReturn = "";
+        for(int i = 0; i < str.length(); i++)
+        {
+            if(Character.isLetter(str.charAt(i)))
+                toReturn += "_";
+            else
+                toReturn += str.charAt(i);
+        }
         return toReturn;
     }
 
