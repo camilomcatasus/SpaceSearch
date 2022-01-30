@@ -116,9 +116,9 @@ public class PlaceholderFragment extends Fragment {
                     @Override
                     public void onResponse(String response) {
                         try {
-                            String url = new JSONArray(response).getString(0);
+                            String url = new JSONArray(response).getString(1);
                             url = url.substring(0, 4)  + 's' + url.substring(4);
-                            new DownloadImageTask( imageView).execute(url);
+                            new DownloadImageTask(imageView).execute(url);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
