@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
                             Intent playGameIntent = new Intent(context, GameActivity.class);
                             playGameIntent.putExtra("json", response);
                             startActivity(playGameIntent);
+                            searching = false;
                         }
                     }, new Response.ErrorListener() {
                 @Override

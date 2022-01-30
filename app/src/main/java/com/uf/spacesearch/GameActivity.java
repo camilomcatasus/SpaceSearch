@@ -53,7 +53,6 @@ public class GameActivity extends AppCompatActivity {
         viewPager.setAdapter(sectionsPagerAdapter);
         TabLayout tabs = binding.tabs;
         tabs.setupWithViewPager(viewPager);
-
         Button button = (Button) findViewById(R.id.home);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
