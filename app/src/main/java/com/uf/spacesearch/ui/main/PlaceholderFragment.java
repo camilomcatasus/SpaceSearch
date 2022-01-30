@@ -59,6 +59,7 @@ public class PlaceholderFragment extends Fragment {
     String name;
     String nameTemplate;
     int index = 0;
+    int position;
     public static PlaceholderFragment newInstance(int index, JSONArray jsonArray) {
         PlaceholderFragment fragment = new PlaceholderFragment();
         Bundle bundle = new Bundle();
@@ -80,9 +81,9 @@ public class PlaceholderFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         pageViewModel = new ViewModelProvider(this).get(PageViewModel.class);
-        int index = 1;
+        position = 1;
         if (getArguments() != null) {
-            index = getArguments().getInt(ARG_SECTION_NUMBER);
+            position = getArguments().getInt(ARG_SECTION_NUMBER);
         }
         try {
             Random random = new Random();
@@ -164,12 +165,17 @@ public class PlaceholderFragment extends Fragment {
                             index++;
                         }
                         if(textView.getText().length() == index)
-                        {if(textView.getText().toString().equals(name))
+                        {
+                            if(textView.getText().toString().equals(name))
                             {
+                                Bundle bundle = new Bundle();
+                                bundle.putInt("position", position);
+                                getParentFragmentManager().setFragmentResult("requestKey",bundle);
                                 //TODO: update score, destroy and replace fragment
                             }
                             else
                             {
+
                                 textView.setText(nameTemplate);
                             }
                             index = 0;

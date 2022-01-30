@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
+
+import org.jetbrains.annotations.NotNull;
 import org.json.*;
 
 import com.android.volley.Request;
@@ -16,7 +18,9 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.FragmentResultListener;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -50,9 +54,19 @@ public class GameActivity extends AppCompatActivity {
         SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager(), images);
 
         ViewPager viewPager = binding.viewPager;
+
         viewPager.setAdapter(sectionsPagerAdapter);
         TabLayout tabs = binding.tabs;
         tabs.setupWithViewPager(viewPager);
+        getSupportFragmentManager().setFragmentResultListener("requestKey", this, new FragmentResultListener() {
+            @Override
+            public void onFragmentResult(@NonNull @NotNull String requestKey, @NonNull @NotNull Bundle result) {
+                //TODO: upon listening to fragment result, update score
+                sectionsPagerAdapter.destroyItem(viewPager,(int)result.get("position"), sectionsPagerAdapter.getItem((int)result.get("position")));
+                sectionsPagerAdapter.fragmentHashMap.remove((int)result.getInt("position"));
+                sectionsPagerAdapter.getItem((int)result.get("position"));
+            }
+        });
         Button button = (Button) findViewById(R.id.home);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
